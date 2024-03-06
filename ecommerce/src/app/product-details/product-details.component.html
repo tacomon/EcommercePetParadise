@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+</head>
+<header>
+  <div class="header-container">
+    <div class="header-icons">
+      <a href="">
+        <div class="icon-container">
+          <img src="../../assets/img/pet-friendly.png" alt="Inicio" style="height: 40px;" height="50px" />
+          <span>Inicio</span>
+        </div>
+      </a>
+      <a href="/cart">
+        <div class="icon-container">
+          <img src="../../assets/img/shopping-bag.png" alt="Carrito de compras" style="height: 40px;" height="50px" />
+          <span>Compras</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+<body class="p-3 m-0 border-0 bd-example">
+  <div class="container">
+    <div class="img-detail">
+      <img [src]="productDetails.imagen" alt="{{productDetails.nombre}}" style="width: 25%; height: 25%;">
+      <div class="slider">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="details col-lg-8 col-md-12">
+        <h3 class="product-title m-b-0">{{productDetails.nombre}}</h3>
+        <div class="rating">
+          <div class="stars">
+            <span class="icon-star text-warning"></span>
+            <span class="icon-star text-warning"></span>
+            <span class="icon-star text-warning"></span>
+            <span class="icon-star text-warning"></span>
+            <span class="icon-star text-muted"></span>
+          </div>
+          <span class="m-l-10">41 reviews</span>
+        </div>
+        <hr>
+        <h5 class="price m-t-0">Precio: <span class="text-warning">{{productDetails.precio | currency:'USD'}}</span></h5>
+        <p class="product-description" style="text-align: justify;">{{productDetails.detalles}}</p>
+        <h5 class="sizes">Tallas Disponibles:
+          <button *ngFor="let talla of productDetails.talla" class="btn btn-sm btn-custom m-1" [title]="talla">{{talla}}</button>
+        </h5>
+        <hr>
+        <div class="action">
+          <button class="btn btn-primary mr-1" type="button" (click)="addToCart(productDetails)">Agregar a carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

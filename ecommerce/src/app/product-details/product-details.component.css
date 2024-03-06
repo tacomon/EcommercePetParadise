@@ -1,0 +1,38 @@
+header {
+  background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);
+  border-radius: 5px;
+  color: #000000;
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los iconos a la derecha */
+  align-items: center;
+}
+
+.header-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+}
+
+.header-icons .icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-icons img {
+  transition: transform 0.3s ease;
+}
+
+.header-icons span {
+  font-size: 14px;
+}
+
+.header-icons a:hover img {
+  transform: scale(1.1);
+}
