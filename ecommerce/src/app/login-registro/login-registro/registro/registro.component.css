@@ -1,0 +1,192 @@
+header {
+  background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);
+  border-radius: 5px;
+  color: #000000;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-right: 20px;
+}
+.header-icons {
+  margin-right: 59px; /* Agrega un margen a la izquierda para mover el icono hacia la derecha */
+}
+
+.header-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+}
+
+.header-icons .icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-icons img {
+  transition: transform 0.3s ease;
+}
+
+.header-icons span {
+  font-size: 14px;
+}
+
+.header-icons a:hover img {
+  transform: scale(1.1);
+}
+
+.registro-container {
+    animation: slideInDown 1s forwards; /* Animación de entrada desde arriba */
+    width: 400px; /* Aumentar el ancho del formulario */
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 40px; /* Aumentar el espacio interno del formulario */
+    border: 0px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+  }
+
+  @keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #092a0a; /* Cambiar el color del texto del enlace */
+    text-decoration: none; /* Eliminar el subrayado predeterminado del enlace */
+    font-weight: bold; /* Hacer el texto del enlace en negrita */
+    align-self: center;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 0px rgba(50, 88, 99, 0.1);
+    animation: slideInLeft 1s forwards; /* Animación de entrada desde la izquierda */
+  }
+  
+  button {
+    width: 100%;
+    padding: 5px;
+    background-color: #1a602c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: fadeIn 1s forwards; /* Animación de aparición gradual */
+    text-size-adjust: 5px;
+  }
+  @keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  
+  button:hover {
+    background-color: #45a049;
+  }
+
+.background-image {
+    flex: 2;
+    background-image: url('../../../../assets/img/mascotas.jpeg');
+    background-size: cover;
+    height: 100%;
+}
+
+.register-form {
+  animation: slideInDown 1s forwards; /* Animación de entrada desde arriba */
+  width: 400px; /* Aumentar el ancho del formulario */
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 40px; /* Aumentar el espacio interno del formulario */
+  border: 0px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+
+
+.background-image {
+  flex: 2;
+  background-image: url('../../../../assets/img/mascotas.jpeg');
+  background-size: cover;
+  height: 100%;
+}
+a {
+  color: #092a0a; /* Cambiar el color del texto del enlace */
+  text-decoration: none; /* Eliminar el subrayado predeterminado del enlace */
+  font-weight: bold; /* Hacer el texto del enlace en negrita */
+  align-self: center;
+}
+
+a:hover {
+  color: #092a0a; /* Cambiar el color del texto del enlace al pasar el ratón */
+  text-decoration: underline; /* Agregar subrayado al pasar el ratón */
+}
+
+.triangle-btn {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 80px solid #f44336;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+  font-size: 16px; /* Ajusta el tamaño del texto según sea necesario */
+  border-radius: 5px; /* Agrega bordes redondeados si lo deseas */
+  cursor: pointer;
+}
+
+.btn-small {
+  font-size: 12px;
+  padding: 5px 10px;
+}

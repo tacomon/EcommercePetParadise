@@ -7,11 +7,23 @@ header {
   border-radius: 5px;
   color: #000000;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-container {
   display: flex;
-  margin-left: 92%;/* Alinea los elementos a la derecha */
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-right: 20px;
+}
+.header-icons {
+  margin-right: 59px; /* Agrega un margen a la izquierda para mover el icono hacia la derecha */
 }
 
 .header-icons a {
@@ -124,7 +136,7 @@ header {
   .item-price {
   font-size: 18px;
   font-weight: bold;
-  margin: 0;
+  margin: 10px;
   }
 
   button {
@@ -165,6 +177,7 @@ header {
   cursor: pointer;
   border-radius: 5px;
   margin-top: 20px;
+  height: 40px;
   }
 
 

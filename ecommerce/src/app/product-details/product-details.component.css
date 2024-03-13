@@ -1,14 +1,53 @@
+/* Estilos existentes para el encabezado y las migas de pan */
 header {
   background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);
   border-radius: 5px;
   color: #000000;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-container {
   display: flex;
-  justify-content: flex-end; /* Alinea los iconos a la derecha */
   align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+/* Estilos nuevos para la tarjeta */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+  margin-top: 20px;
+}
+
+.img-detail {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn-custom {
+  background-color: #6de8ed;
+  color: #000000;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #ebe3d9;
+}
+
+.logo {
+  margin-right: 20px;
+}
+.header-icons {
+  margin-right: 59px; /* Agrega un margen a la izquierda para mover el icono hacia la derecha */
 }
 
 .header-icons a {
@@ -35,4 +74,38 @@ header {
 
 .header-icons a:hover img {
   transform: scale(1.1);
+}
+
+
+
+.bread-icons a {
+  margin-top: 5px;
+  margin-left: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center; /* Alinea el texto al centro */
+  color: #000000; /* Color del texto */
+  text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+}
+
+.bread-icons .icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los íconos y el texto al centro verticalmente */
+}
+
+.bread-icons img {
+  transition: transform 0.3s ease;
+}
+
+.bread-icons span {
+  font-size: 14px;
+}
+
+.bread-icons a:hover img {
+  transform: scale(1.1);
+}
+.action button:hover {
+  transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón sobre el botón */
+  transition: transform 0.3s ease-in-out;
 }

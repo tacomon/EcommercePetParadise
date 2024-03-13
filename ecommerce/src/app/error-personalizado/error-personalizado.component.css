@@ -1,0 +1,114 @@
+body {
+
+    font-family: Arial, sans-serif;
+  }
+  
+
+header {
+    background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);  border-radius: 5px;
+    color: #000000;
+    padding: 20px;
+  
+    
+  }
+  .header-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center; /* Alinea el texto al centro */
+    color: #000000; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+  }
+  
+  .header-icons .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los íconos y el texto al centro verticalmente */
+  }
+  
+  .header-icons img {
+    transition: transform 0.3s ease;
+  }
+  
+  .header-icons span {
+    font-size: 14px;
+  }
+  
+  .header-icons a:hover img {
+    transform: scale(1.1);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+  }
+  
+  .logo,
+  .header-icons {
+    flex: 0 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+/* Migas de pna */
+.bread-icons a {
+    margin-left: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center; /* Alinea el texto al centro */
+    color: #000000; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+  }
+  
+  .bread-icons .icon-container {
+    background-color: #ffffff00;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los íconos y el texto al centro verticalmente */
+  }
+  
+  .bread-icons img {
+    transition: transform 0.3s ease;
+  }
+  
+  .bread-icons span {
+    font-size: 14px;
+  }
+  
+  .bread-icons a:hover img {
+    transform: scale(1.1);
+  }
+  /* Error */
+  
+  .container {
+    text-align: center;
+  }
+  
+  .error-image {
+    max-width: 350px;
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+  }

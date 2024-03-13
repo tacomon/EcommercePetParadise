@@ -3,6 +3,7 @@ import { ProductoService } from '../services/producto.service';
 import { Producto } from '../models/producto';
 import { CartItem } from '../models/cartItem';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -20,20 +21,19 @@ export class ProductComponent implements OnInit {
   tallasUnicas: string[] = [];
   listProductosOriginal: Producto[] = [];
 
-  constructor(private _productoService: ProductoService, private toastr: ToastrService) {}
+  constructor(private _productoService: ProductoService, private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
     this.obtenerProductos(this.currentPage, this.itemsPerPage);
     this.obtenerProductosUnicos();
   }
 
-
-
   // Restaurar la lista de productos originales cuando se agregue un producto al carrito
   addToCart(producto: Producto): void {
     this._productoService.addToCart(producto);
-    this.toastr.success('Se agregó al carrito!', 'Producto agregado!');
     this.listProductosOriginal = this.listProductos.slice();
+    console.log('Antes de mostrar la notificación');
+    this.toastr.success('Se agregó al carrito!', 'Producto agregado!');
   }
 
   obtenerProductos(page: number, itemsPerPage: number): void {
@@ -42,7 +42,6 @@ export class ProductComponent implements OnInit {
       this.listProductos = data.products;
       this.totalPages = data.totalPages;
       this.currentPage = page;
-
       this.categoriasUnicas = this.obtenerCategoriasUnicas(this.listProductos);
       this.obtenerProductosUnicos();
       this.listProductosOriginal = this.listProductos.slice(); // Guardar copia de la lista original
@@ -69,8 +68,7 @@ export class ProductComponent implements OnInit {
             tallasSet.add(talla);
           });
         }
-      });
-
+      })
       this.tallasUnicas = Array.from(tallasSet).map((talla) => talla.toString());
     } else {
       this.tallasUnicas = [];
@@ -79,6 +77,8 @@ export class ProductComponent implements OnInit {
 
   agregarAlCarrito(producto: Producto): void {
     this._productoService.addToCart(producto);
+    console.log('Antes de mostrar la notificación');
+    this.toastr.success('Se agregó al carrito!', 'Producto agregado!');
   }
 
   changePage(page: number): void {
@@ -92,28 +92,36 @@ export class ProductComponent implements OnInit {
   filtrarPorCategoria(categoria: string): void {
     this.listProductos = this.listProductosOriginal.filter(producto => producto.categoria === categoria);
   }
-  filtrarPorTalla(talla: string): void {
-    // Restablecer los filtros previos
+  // filtrarPorTalla(talla: string): void {
+  //   // Restablecer los filtros previos
 
-    // Filtrar los productos que contienen la talla seleccionada en su lista de tallas
-    this.listProductos = this.listProductos.filter((producto) => {
-      return producto.tallas && producto.tallas.includes(parseInt(talla));
-    });
-  }
+  //   // Filtrar los productos que contienen la talla seleccionada en su lista de tallas
+  //   this.listProductos = this.listProductos.filter((producto) => {
+  //     return producto.tallas && producto.tallas.includes(parseInt(talla));
+  //   });
+  // }
   buscarProductos(): void {
     if (this.searchQuery.trim() === '') {
       // Si la consulta está vacía, restablecer los filtros
-  
     } else {
       // Filtrar productos por nombre o categoría que coincidan con la consulta
       const query = this.searchQuery.toLowerCase().trim();
-      this.listProductos = this.listProductosOriginal.filter((producto) => {
+      const resultados = this.listProductosOriginal.filter((producto) => {
         return (
           producto.nombre.toLowerCase().includes(query) ||
           producto.categoria.toLowerCase().includes(query)
         );
       });
+  
+      if (resultados.length === 0) {
+        // No se encontraron resultados, redirigir a la página de error
+        this.router.navigate(['/error']);
+      } else {
+        // Mostrar los resultados en la lista
+        this.listProductos = resultados;
+      }
     }
   }
+  
   
 }

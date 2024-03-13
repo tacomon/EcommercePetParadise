@@ -15,7 +15,13 @@ import { Router, RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { ProductoService } from './services/producto.service';
-import { LoginComponent } from './login/login.component';
+
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+
+import { FooterComponent } from './footer/footer/footer.component';
+import { LoginComponent } from './login-registro/login-registro/login/login.component';
+import { RegistroComponent } from './login-registro/login-registro/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +29,10 @@ import { LoginComponent } from './login/login.component';
     ProductComponent,
     ProductDetailsComponent,
     CartComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent,
+    ErrorPersonalizadoComponent,
+    FooterComponent
 
   ],
   imports: [
@@ -33,9 +42,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-rigth',
-    }),
+    ToastrModule.forRoot({positionClass: 'toast-bottom-center',}),
   ],
   providers: [ProductoService],
   bootstrap: [AppComponent]

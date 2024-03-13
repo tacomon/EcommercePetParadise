@@ -5,15 +5,27 @@
 </head>
 <body>
   <header>
-    <nav>
-      <form (ngSubmit)="buscarProductos()" #searchForm="ngForm" class="search-form">
-        <input type="text" name="searchQuery" [(ngModel)]="searchQuery" placeholder="Buscar por nombre o categoría..." class="search-input">
-        <button type="submit" class="search-button">Buscar</button>
-      </form>
-      <div class="header-icons">
+    <div class="header-container">
+      <div class="logo">
         <a href="">
           <div class="icon-container">
-            <img src="../../assets/img/dog.png" alt="Inicio Sesion" style="height: 40px;" height="50px">
+            <img src="../../assets/img/Background (1).png" alt="Inicio Sesion" style="height: 40px;" height="50px">
+          </div>
+        </a>
+      </div>
+      <div class="search-container" >
+        <form (ngSubmit)="buscarProductos()" #searchForm="ngForm" class="search-form">
+          <input type="text" name="searchQuery" [(ngModel)]="searchQuery" placeholder="Buscar por nombre o categoría..." class="search-input">
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+            <img src="../../assets/img/finding.png" alt="Perrito con lupa" class="search-icon"> 
+          </button>
+        </form>
+      </div>
+      <div class="header-icons">
+        <a href="/login">
+          <div class="icon-container">
+            <img src="../../assets/img/dog.png" alt="PetParadise " style="height: 40px;" height="50px">
             <span>Login</span>
           </div>
         </a>
@@ -30,9 +42,7 @@
           </div>
         </a>
       </div>
-      
-            
-    </nav>
+    </div>
   </header>
 
   <div class="slider">
@@ -49,20 +59,19 @@
     </ul>
   </div>
 
-  <div class="bread-icons">
+  <div class="bread-icons" style="margin-top: 5px;">
     <a href="">
       <div class="icon-container">
         <img src="../../assets/img/dog-house.png" alt="Inicio" style="height: 40px;" height="40px">
-        <span>Inicio</span>
+        <span>Inicio ></span>
       </div>
     </a>
-    <a href="">
+    <a>
       <div class="icon-container">
         <img src="../../assets/img/running.png" alt="Inicio Sesion" style="height: 40px;" height="40px">
         <span>Pagina actual</span>
       </div>
     </a>
-
   </div>
   
   <div class="categoria-container">
@@ -77,8 +86,6 @@
     </div>
   </div>
   
-  
-
   <div class="productos-container">
     <div class="product" *ngFor="let producto of listProductos">
       <a [routerLink]="['/product-detail', producto._id]">
@@ -86,12 +93,15 @@
       </a>
       <h3>{{producto.nombre}}</h3>
       <p>{{producto.detalles}}</p>
-      <p style="color: red;">${{producto.precio}}</p>
+      <p style="color: red;">${{producto.precio}} MXN</p>
       <button (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
     </div>
   </div>
 
 </body>
+
+  <app-footer></app-footer>
+
 </html>
 
 <script>

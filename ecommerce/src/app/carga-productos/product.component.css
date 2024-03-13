@@ -13,15 +13,15 @@ header {
 .header-icons a {
   display: inline-block;
   margin-right: 10px;
-  text-align: center; /* Alinea el texto al centro */
-  color: #000000; /* Color del texto */
-  text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+  text-align: center;
+  color: #000000; 
+  text-decoration: none; 
 }
 
 .header-icons .icon-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Alinea los íconos y el texto al centro verticalmente */
+  align-items: center;
 }
 
 .header-icons img {
@@ -36,38 +36,111 @@ header {
   transform: scale(1.1);
 }
 
-/* Estilos para el formulario de búsqueda */s
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+}
+
+.logo,
+.header-icons {
+  flex: 0 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* buscador */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.search-container {
+  flex-grow: 1;
+  margin: 0 20px;
+  max-width: 400px;
+  align-items: center;
+}
+
 .search-form {
   display: flex;
   align-items: center;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(4, 82, 238, 0.1);
-
+  background-color: #ffffff8c;
+  border: 1px solid #ffffff8c;
+  border-radius: 20px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-form input[type="text"] {
-  padding: 1px;
+.search-input {
   border: none;
-  border-radius: 5px;
   outline: none;
+  font-size: 14px;
+  padding: 6px;
+  width: 100%;
+  background-color: #ffffff00; 
+
 }
 
-.search-form button {
-  background-color: #007BFF;
-  color: #fff;
+.search-button {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  padding: 10px 20px;
+  color: #333;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  padding: 6px;
+  transition: color 0.3s;
 }
 
-.search-form button:hover {
-  background-color: #005ca3;
+.search-button:hover {
+  color: #007BFF;
+}
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  transition: opacity 0.5s;
+  transition: transform 0.3s ease;
+}
 
+.search-icon {
+  height: 40px; /* Ajusta la altura según el tamaño deseado */
+  width: auto; /* Mantiene la relación de aspecto de la imagen */
+  transition: transform 0.3s ease;
+}
+
+.search-button:hover {
+  opacity: 0.9; /* Reduce ligeramente la opacidad al pasar el mouse por encima */
+}
+.search-button:hover .search-icon {
+  transform: scale(1.2); /* Aumenta el tamaño de la imagen en un 20% */
+}
+
+/* header icon */
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.icon-container span {
+  font-size: 12px;
+  margin-top: 5px;
 }.slider {
   width: 100%;
   height: 300px;
@@ -104,6 +177,7 @@ header {
   100% { margin-left: -200%; }
 }
 
+/* Migas de pna */
 
 .bread-icons a {
   margin-left: 20px;
@@ -168,7 +242,7 @@ nav a {
   color: #000000;
   padding: 0;
   position: fixed; /* Fijar la barra de navegación */
-  top: 6; /* Colocarla en la parte superior */
+  top: 2; /* Colocarla en la parte superior */
   left: 1; /* Colocarla en la parte izquierda */
   height: 100%; /* Ocupar toda la altura de la página */
 }
@@ -245,17 +319,17 @@ nav a {
 }
 
 .product button {
-  background-color: #000000;
+  background-color: #004cffa5;
   color: #fff;
   border: none;
+  border-radius: 5px;
   padding: 10px 20px;
   text-decoration: none;
   display: flex; /* Mostrar botones como elementos flexibles */
-  justify-content: space-between; /* Espacio entre botones */
   font-size: 1em;
   margin: 10px 0;
   cursor: pointer;
-  width: 50%; /* Para que los botones ocupen todo el ancho del elemento */
+  width: 100%; /* Para que los botones ocupen todo el ancho del elemento */
 }
 .product button:hover {
   transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón sobre el botón */

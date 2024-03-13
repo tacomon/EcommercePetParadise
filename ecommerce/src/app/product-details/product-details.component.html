@@ -8,57 +8,87 @@
 </head>
 <header>
   <div class="header-container">
-    <div class="header-icons">
+    <div class="logo">
       <a href="">
         <div class="icon-container">
-          <img src="../../assets/img/pet-friendly.png" alt="Inicio" style="height: 40px;" height="50px" />
-          <span>Inicio</span>
-        </div>
-      </a>
-      <a href="/cart">
-        <div class="icon-container">
-          <img src="../../assets/img/shopping-bag.png" alt="Carrito de compras" style="height: 40px;" height="50px" />
-          <span>Compras</span>
+          <img src="../../assets/img/Background (1).png" alt="Inicio" style="height: 40px;" height="50px">
         </div>
       </a>
     </div>
+    <nav>
+      <div class="header-icons">
+        <a href="">
+          <div class="icon-container">
+            <img src="../../assets/img/pet-friendly.png" alt="Inicio" style="height: 40px;">
+            <span>Inicio</span>
+          </div>
+        </a>
+        <a href="/cart">
+          <div class="icon-container">
+            <img src="../../assets/img/shopping-bag.png" alt="Carrito de compras" style="height: 40px;" height="50px" />
+            <span>Compras</span>
+          </div>
+        </a>
+      </div>
+
+    </nav>
   </div>
 </header>
-<body class="p-3 m-0 border-0 bd-example">
-  <div class="container">
-    <div class="img-detail">
-      <img [src]="productDetails.imagen" alt="{{productDetails.nombre}}" style="width: 25%; height: 25%;">
-      <div class="slider">
-      </div>
+<div class="bread-icons" style="margin-top: 5px;">
+  <a href="">
+    <div class="icon-container">
+      <img src="../../assets/img/dog-house.png" alt="Inicio" style="height: 40px;" height="40px">
+      <span>Inicio ></span>
     </div>
-    
+  </a>
+  <a>
+    <div class="icon-container">
+      <img src="../../assets/img/pet-food.png" alt="Detalles" style="height: 40px;" height="40px">
+      <span>Pagina actual</span>
+    </div>
+  </a>
+
+</div>
+<div class="container">
+  <div class="card mx-auto">
     <div class="row">
-      <div class="details col-lg-8 col-md-12">
-        <h3 class="product-title m-b-0">{{productDetails.nombre}}</h3>
-        <div class="rating">
-          <div class="stars">
-            <span class="icon-star text-warning"></span>
-            <span class="icon-star text-warning"></span>
-            <span class="icon-star text-warning"></span>
-            <span class="icon-star text-warning"></span>
-            <span class="icon-star text-muted"></span>
-          </div>
-          <span class="m-l-10">41 reviews</span>
+      <div class="col-md-4">
+        <div class="img-detail">
+          <img [src]="productDetails.imagen" alt="{{productDetails.nombre}}" class="img-fluid">
+          <div class="slider"></div>
         </div>
-        <hr>
-        <h5 class="price m-t-0">Precio: <span class="text-warning">{{productDetails.precio | currency:'USD'}}</span></h5>
-        <p class="product-description" style="text-align: justify;">{{productDetails.detalles}}</p>
-        <h5 class="sizes">Tallas Disponibles:
-          <button *ngFor="let talla of productDetails.talla" class="btn btn-sm btn-custom m-1" [title]="talla">{{talla}}</button>
-        </h5>
-        <hr>
-        <div class="action">
-          <button class="btn btn-primary mr-1" type="button" (click)="addToCart(productDetails)">Agregar a carrito</button>
+      </div>
+      <div class="col-md-8">
+        <div class="details">
+          <h3 class="product-title m-b-0">{{productDetails.nombre}}</h3>
+          <hr>
+          <h5 class="price m-t-0" >Precio: <span class="text-warning" >{{productDetails.precio | currency:'USD'}}</span></h5>
+          <p class="product-description" style="text-align: justify;">{{productDetails.detalles}}</p>
+          <h5 class="sizes">Tallas Disponibles: <button *ngFor="let talla of productDetails.talla" class="btn btn-sm btn-custom m-1" [title]="talla">{{talla}}</button></h5>
+          <hr>
+          <div class="action">
+            <button class="btn btn-primary mr-1" type="button" (click)="addToCart(productDetails)"  style="background-color:#004cffa5;">Agregar a carrito</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</body>
-
+</div>
+<!-- productos relacionados -->
+  <!-- <div class="row mt-4">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let producto of productosRelacionados">
+      <div class="card">
+        <img [src]="producto.imagen" class="card-img-top" alt="{{producto.nombre}}">
+        <div class="card-body">
+          <h5 class="card-title">{{producto.nombre}}</h5>
+          <p class="card-text">{{producto.descripcion}}</p>
+          <p class="card-text">Precio: {{producto.precio | currency:'USD'}}</p>
+          <a href="#" class="btn btn-primary">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<app-footer></app-footer>
 </html>
