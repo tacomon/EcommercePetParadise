@@ -104,6 +104,9 @@ header {
   display: flex;
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   }
 
   .cart-item img {
@@ -205,4 +208,36 @@ header {
   .breadcrumb li.active {
   color: #333;
   font-weight: bold;
+  }
+
+
+  @media (max-width: 480px) {
+    .item-details h3 {
+      font-size: 16px;
+    }
+  
+    .item-details p {
+      font-size: 14px;
+    }
+  
+    .item-price {
+      font-size: 16px;
+      margin: 5px;
+    }
+  
+    button {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+
+  .item-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .item-price {
+    text-align: right;
   }

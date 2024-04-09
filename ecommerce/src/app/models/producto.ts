@@ -5,10 +5,10 @@ export class Producto {
     categoria: string;
     detalles: string;
     precio: number;
-    tallas: number[]; // Usamos un array de números para representar las tallas
+    tallas: string; // Usamos un array de números para representar las tallas
     imagen: string;
 
-    constructor(nombre: string, categoria: string, precio: number, tallas: number[], detalles: string, imagen: string) {
+    constructor(_id:number, nombre: string, categoria: string, precio: number, tallas: string, detalles: string, imagen: string) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;

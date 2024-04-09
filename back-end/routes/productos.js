@@ -6,6 +6,8 @@ const Producto = require("../models/Producto");
 
 // Ruta para obtener productos
 router.get('/', productController.obtenerProductos);
+
+// Ruta para obtener detalles de los productos
 router.get('/:id', async (req, res) => {
   try {
     const producto = await Producto.findById(req.params.id);
@@ -21,6 +23,14 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Ruta para agregar un producto al carrito
 router.post('/:id', productController.agregarAlCarrito);
+
+// Ruta para registrar un nuevo producto
+router.post('/', productController.registrarProducto);
+
+// Ruta para eliminar un producto por su ID
+router.delete('/:id', productController.eliminarProducto);
+
 
 module.exports = router;

@@ -21,6 +21,7 @@ import { ErrorPersonalizadoComponent } from './error-personalizado/error-persona
 import { FooterComponent } from './footer/footer/footer.component';
 import { LoginComponent } from './login-registro/login-registro/login/login.component';
 import { RegistroComponent } from './login-registro/login-registro/registro/registro.component';
+import { ProductRegisterComponent } from './product-register/product-register/product-register.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RegistroComponent } from './login-registro/login-registro/registro/regi
     LoginComponent,
     RegistroComponent,
     ErrorPersonalizadoComponent,
+    ProductRegisterComponent,
     FooterComponent
 
   ],

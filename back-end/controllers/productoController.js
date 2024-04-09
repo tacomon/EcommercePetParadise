@@ -53,11 +53,7 @@ exports.agregarAlCarrito = async (req, res) => {
       return res.status(404).json({ msg: 'El producto no existe' });
     }
 
-    // Asumiendo que tienes un sistema de autenticación y puedes obtener el usuario actual
-    const userId = req.user.id; // Debes implementar cómo obtienes el ID del usuario actual
-
-    // Añade lógica para guardar el producto en el carrito del usuario.
-    // Esto podría involucrar agregar el producto al documento del usuario en tu base de datos.
+    const userId = req.user.id;
 
     res.status(200).json({ msg: 'Producto agregado al carrito con éxito' });
   } catch (error) {
@@ -66,3 +62,42 @@ exports.agregarAlCarrito = async (req, res) => {
   }
 };
 
+// Controlador para registrar un nuevo producto
+exports.registrarProducto = async (req, res) => {
+  try {
+    if (!req.body) {
+      return res.status(400).json({ mensaje: 'No se proporcionaron datos en el cuerpo de la solicitud' });
+    }
+
+    const { nombre, detalles, tallas, precio, categoria } = req.body;
+    const imagen = req.file ? req.file.path : null;
+
+
+    // Asegúrate de que 'tallas' sea un array de números
+    // const tallasArray = Array.isArray(tallas) ? tallas : [tallas];
+
+    const nuevoProducto = new Producto({ nombre, detalles, tallas, precio, categoria, imagen });
+    
+    await nuevoProducto.save();
+    res.status(201).json({ mensaje: 'Producto registrado exitosamente', producto: nuevoProducto });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
+  }
+};
+
+// Controlador para eliminar un producto por su ID
+exports.eliminarProducto = async (req, res) => {
+  try {
+    // Busca el producto por su ID y elimínalo
+    const productoEliminado = await Producto.findByIdAndDelete(req.params.id);
+
+    if (!productoEliminado) {
+      return res.status(404).json({ mensaje: 'El producto no existe' });
+    }
+
+    res.json({ mensaje: 'Producto eliminado exitosamente', producto: productoEliminado });
+  } catch (error) {
+    console.error('Error al eliminar el producto:', error);
+    res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
+  }
+};

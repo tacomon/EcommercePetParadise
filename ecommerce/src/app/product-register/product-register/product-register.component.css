@@ -1,0 +1,132 @@
+
+  body {
+    font-family: sans-serif;
+    background-image: url('../../../assets/img/backregister.jpg');
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra toda la pantalla */
+    background-position: center; /* Centra la imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+  }
+  
+  
+header {
+    background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);  border-radius: 5px;
+    color: #000000;
+    padding: 20px;
+  
+    
+  }
+  .header-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    color: #000000; 
+    text-decoration: none; 
+  }
+  
+  .header-icons .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header-icons img {
+    transition: transform 0.3s ease;
+  }
+  
+  .header-icons span {
+    font-size: 14px;
+  }
+  
+  .header-icons a:hover img {
+    transform: scale(1.1);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+  }
+  
+  .logo,
+  .header-icons {
+    flex: 0 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+.product-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(43, 6, 113, 0.1);
+}
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e1e5ea;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(43, 6, 113, 0.1);
+}
+.product-form h1{
+    margin: 0;
+    font-size: 29px;
+   text-align: center;
+}
+
+.product-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.product-form input[type="text"],
+.product-form textarea,
+.product-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: calc(100% - 10px); /* Ajusta el ancho de los inputs restando el margen */
+    border: 1px solid #ccc; /* Añade un borde a los inputs */
+    border-radius: 3px; /* Añade bordes redondeados a los inputs */
+    box-sizing: border-box;
+    font-size: 14px;
+
+}
+
+.product-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(43, 6, 113, 0.1);
+}

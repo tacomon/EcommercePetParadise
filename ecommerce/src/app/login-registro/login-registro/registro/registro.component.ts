@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
-// import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-registro',

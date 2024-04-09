@@ -7,6 +7,7 @@ import { ErrorPersonalizadoComponent } from './error-personalizado/error-persona
 import { LoginComponent } from './login-registro/login-registro/login/login.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { RegistroComponent } from './login-registro/login-registro/registro/registro.component';
+import { ProductRegisterComponent } from './product-register/product-register/product-register.component';
 
 // import { LoginComponent } from './login/login.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'product-detail/:id', component:  ProductDetailsComponent },
   { path: 'cart', component:  CartComponent },
   { path: 'registro', component:  RegistroComponent },
+  { path: 'agregar', component:  ProductRegisterComponent },
   { path: '**',  component: ErrorPersonalizadoComponent},
   { path: 'footer',  component: FooterComponent},
 
