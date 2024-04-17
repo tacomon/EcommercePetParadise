@@ -29,6 +29,8 @@ router.post('/:id', productController.agregarAlCarrito);
 // Ruta para registrar un nuevo producto
 router.post('/', productController.registrarProducto);
 
+
+
 // Ruta para eliminar un producto por su ID
 router.delete('/:id', productController.eliminarProducto);
 

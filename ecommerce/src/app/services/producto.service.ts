@@ -26,7 +26,7 @@ export class ProductoService {
     const cartItem: CartItem = {
       product: product,
       quantity: 1,
-      size: product.tallas,
+      size: product.talla,
       price: product.precio,
       imagen: product.imagen
     };

@@ -1,18 +1,19 @@
 import { CartItem } from "./cartItem";
 export class Producto {
-    _id?: number;
+    _id: number;
     nombre: string;
-    categoria: string;
-    detalles: string;
     precio: number;
-    tallas: string; // Usamos un array de números para representar las tallas
+    detalles: string;
+    categoria: string;
+    talla: string;
     imagen: string;
 
-    constructor(_id:number, nombre: string, categoria: string, precio: number, tallas: string, detalles: string, imagen: string) {
+    constructor(_id:number, nombre: string,  precio: number, detalles: string, talla: string, categoria: string,imagen: string) {
+        this._id = _id;
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
-        this.tallas = tallas;
+        this.talla = talla;
         this.detalles= detalles;
         this.imagen = imagen;
     }

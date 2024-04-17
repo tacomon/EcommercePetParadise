@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'agregar', component:  ProductRegisterComponent },
   { path: '**',  component: ErrorPersonalizadoComponent},
   { path: 'footer',  component: FooterComponent},
+  
 
 
 

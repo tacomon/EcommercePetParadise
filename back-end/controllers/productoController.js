@@ -68,22 +68,16 @@ exports.registrarProducto = async (req, res) => {
     if (!req.body) {
       return res.status(400).json({ mensaje: 'No se proporcionaron datos en el cuerpo de la solicitud' });
     }
-
-    const { nombre, detalles, tallas, precio, categoria } = req.body;
-    const imagen = req.file ? req.file.path : null;
-
-
-    // Asegúrate de que 'tallas' sea un array de números
-    // const tallasArray = Array.isArray(tallas) ? tallas : [tallas];
-
-    const nuevoProducto = new Producto({ nombre, detalles, tallas, precio, categoria, imagen });
-    
+    const { nombre, precio, detalles, talla, categoria } = req.body;
+    const nuevoProducto = new Producto({ nombre, precio, detalles, talla, categoria  });  
     await nuevoProducto.save();
+  
     res.status(201).json({ mensaje: 'Producto registrado exitosamente', producto: nuevoProducto });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
   }
 };
+
 
 // Controlador para eliminar un producto por su ID
 exports.eliminarProducto = async (req, res) => {
