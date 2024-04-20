@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-register',
@@ -13,7 +14,10 @@ export class ProductRegisterComponent {
   talla: string = '';
   categoria: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) {}
 
   registrarProducto() {
     const producto = {
@@ -28,12 +32,14 @@ export class ProductRegisterComponent {
       .subscribe(
         (response) => {
           console.log('Producto registrado exitosamente:', response);
+          this.toastr.success('Se agregó al carrito!', 'Producto agregado!');
           // Aquí puedes agregar lógica adicional, como redireccionar a otra página o mostrar un mensaje de éxito
         },
         (error) => {
           console.error('Error al registrar el producto:', error);
-          // Aquí puedes manejar el error, como mostrar un mensaje al usuario
+          this.toastr.error('Ocurrio un problema', 'No se agrego el roducto!');
         }
       );
+
   }
 }

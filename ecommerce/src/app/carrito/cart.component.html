@@ -65,7 +65,7 @@
                             <div class="item-size">
                                 <label for="size">Talla:</label>
                                 <select id="size" name="size" [(ngModel)]="item.size" (change)="updateCartItem(item)">
-                                    <option *ngFor="let talla of item.product.tallas" [value]="talla">{{ talla }}</option>
+                                    <option *ngFor="let talla of item.product.talla" [value]="talla">{{ talla }}</option>
                                 </select>
                             </div>
                         </div>
