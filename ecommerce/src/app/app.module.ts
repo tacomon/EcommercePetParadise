@@ -22,6 +22,7 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { LoginComponent } from './login-registro/login-registro/login/login.component';
 import { RegistroComponent } from './login-registro/login-registro/registro/registro.component';
 import { ProductRegisterComponent } from './product-register/product-register/product-register.component';
+import { InformacionComponent } from './informacion/informacion.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ProductRegisterComponent } from './product-register/product-register/pr
     RegistroComponent,
     ErrorPersonalizadoComponent,
     ProductRegisterComponent,
-    FooterComponent
+    FooterComponent,
+    InformacionComponent
 
   ],
   imports: [

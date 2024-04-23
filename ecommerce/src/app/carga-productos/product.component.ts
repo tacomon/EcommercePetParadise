@@ -28,6 +28,7 @@ export class ProductComponent implements OnInit {
     ['inicio de sesión', '/login'],
     ['carrito', '/cart'],
     ['agregar','/agregar'],
+    ['informacion','/info'],
   ]);
 
   constructor(

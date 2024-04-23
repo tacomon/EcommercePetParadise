@@ -1,0 +1,152 @@
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+  }
+  
+  header {
+    background-image: linear-gradient(180deg, #6de8ed 10%, #ebe3d9 90%);  border-radius: 5px;
+    color: #000000;
+    padding: 20px;
+  
+    
+  }
+  .header-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    color: #000000; 
+    text-decoration: none; 
+  }
+  
+  .header-icons .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header-icons img {
+    transition: transform 0.3s ease;
+  }
+  
+  .header-icons span {
+    font-size: 14px;
+  }
+  
+  .header-icons a:hover img {
+    transform: scale(1.1);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+  }
+  
+  .logo,
+  .header-icons {
+    flex: 0 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  /* header icon */
+.header-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .icon-container span {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+/* Migas de pna */
+
+.bread-icons a {
+    margin-left: 20px;
+    display: inline-block;
+    text-align: center; /* Alinea el texto al centro */
+    color: #000000; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+  }
+  
+  .bread-icons .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los íconos y el texto al centro verticalmente */
+  }
+  
+  .bread-icons img {
+    transition: transform 0.3s ease;
+  }
+  
+  .bread-icons span {
+    font-size: 14px;
+  }
+  
+  .bread-icons a:hover img {
+    transform: scale(1.1);
+  }
+  
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Añade bordes redondeados */
+    overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
+}
+
+.card-body {
+    padding: 20px; /* Aumenta el espaciado interno */
+}
+
+.card-title {
+    font-weight: 700; /* Hace el título más grueso */
+    margin-bottom: 15px; /* Añade más espacio entre el título y el texto */
+    display: flex;
+    align-items: center; /* Alinea los iconos y el título */
+}
+
+.card-title i {
+    margin-right: 10px; /* Añade espacio entre el icono y el título */
+    color: #6de8ed; /* Cambia el color de los iconos */
+    font-size: 20px; /* Aumenta el tamaño de los iconos */
+}
+
+.card-text {
+    line-height: 1.6; /* Aumenta el espaciado entre líneas */
+    color: #555; /* Cambia el color del texto */
+    text-align: justify;
+    }
+  .popup {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+
+  .popup:hover {
+      color: #0056b3;
+      cursor: pointer;
+  }
+
+  .popup-content {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+  }

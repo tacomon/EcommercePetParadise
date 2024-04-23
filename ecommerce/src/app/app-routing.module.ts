@@ -8,27 +8,18 @@ import { LoginComponent } from './login-registro/login-registro/login/login.comp
 import { FooterComponent } from './footer/footer/footer.component';
 import { RegistroComponent } from './login-registro/login-registro/registro/registro.component';
 import { ProductRegisterComponent } from './product-register/product-register/product-register.component';
-
-// import { LoginComponent } from './login/login.component';
-
+import { InformacionComponent } from './informacion/informacion.component';
 
 const routes: Routes = [
   { path: '', component:  ProductComponent },
+  { path: 'info',  component: InformacionComponent},
   { path: 'login',  component: LoginComponent},
   { path: 'product-detail/:id', component:  ProductDetailsComponent },
   { path: 'cart', component:  CartComponent },
   { path: 'registro', component:  RegistroComponent },
   { path: 'agregar', component:  ProductRegisterComponent },
   { path: '**',  component: ErrorPersonalizadoComponent},
-  { path: 'footer',  component: FooterComponent},
-  
-
-
-
-
-  // { path: 'login', component:  LoginComponent }
-
-  
+  { path: 'footer',  component: FooterComponent},  
 ];
 
 @NgModule({
