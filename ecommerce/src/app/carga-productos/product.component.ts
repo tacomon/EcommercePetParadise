@@ -5,6 +5,7 @@ import { CartItem } from '../models/cartItem';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { AuthService } from '../services/auth.service'; 
 
 @Component({
   selector: 'app-product',
@@ -32,15 +33,29 @@ export class ProductComponent implements OnInit {
   ]);
 
   constructor(
+    
     private _productoService: ProductoService,
     private toastr: ToastrService,
     private router: Router,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    public authService: AuthService 
   ) {}
 
   ngOnInit(): void {
     this.obtenerProductos(this.currentPage, this.itemsPerPage);
     // this.obtenerProductosUnicos();
+      // Verifica si el usuario ya está autenticado al cargar el componente
+    const token = localStorage.getItem('token');
+    this.authService.isAuthenticated = !!token;
+  }
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+  logout(): void {
+    this.authService.logout();
+    this.toastr.success('A salido de la sesion!', 'Sesion cerrada!');
+    // Opcionalmente, puedes redirigir a la página de inicio o login después del cierre de sesión
+    this.router.navigate(['/login']);
   }
 
   // Restaurar la lista de productos originales cuando se agregue un producto al carrito

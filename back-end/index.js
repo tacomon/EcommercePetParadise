@@ -15,7 +15,10 @@ app.use(cors());
 
 // Rutas
 app.use('/api/productos', require('./routes/productos'));
+app.use('/api/auth',require('./routes/auth'))
 
+
+// app.use('/api/auth', require('./routes/auth'));
 app.listen(4000, () => {
   console.log('El servidor está corriendo perfectamente');
 });

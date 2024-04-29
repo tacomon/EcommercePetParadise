@@ -3,6 +3,6 @@
     "bcrypt": "^5.1.1",
     "font-awesome": "^4.7.0",
     "mongoose": "^8.1.2",
-    "nodemailer": "^6.9.8"
+    "nodemailer": "^6.9.13"
   }
 }

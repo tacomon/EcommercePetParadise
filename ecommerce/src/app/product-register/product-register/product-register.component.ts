@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service'; 
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-product-register',
@@ -16,8 +20,22 @@ export class ProductRegisterComponent {
 
   constructor(
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    public authService: AuthService 
   ) {}
+  ngOnInit(): void {
+      // Verifica si el usuario ya está autenticado al cargar el componente
+    const token = localStorage.getItem('token');
+    this.authService.isAuthenticated = !!token;
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.toastr.success('A salido de la sesion!', 'Sesion cerrada!');
+    //  redirigir a la página de inicio o login después del cierre de sesión
+    this.router.navigate(['/login']);
+  }
 
   registrarProducto() {
     const producto = {
