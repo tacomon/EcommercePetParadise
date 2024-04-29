@@ -12,6 +12,7 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from './auth.guard';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component:  ProductComponent },
@@ -23,9 +24,11 @@ const routes: Routes = [
   { path: 'cart', component:  CartComponent },
   { path: 'registro', component:  RegistroComponent },
   { path: 'agregar', component: ProductRegisterComponent, canActivate: [AuthGuard] }, // Ruta protegida
+  { path: 'registroP', component: AdminComponent}, // Ruta protegida
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**',  component: ErrorPersonalizadoComponent},
   { path: 'footer',  component: FooterComponent}, 
+
 
 
 ];

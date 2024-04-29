@@ -45,19 +45,27 @@ export class ProductRegisterComponent {
       talla: this.talla,
       categoria: this.categoria
     };
-
+  
     this.http.post<any>('http://localhost:4000/api/productos', producto)
       .subscribe(
         (response) => {
           console.log('Producto registrado exitosamente:', response);
           this.toastr.success('Se agregó al carrito!', 'Producto agregado!');
-          // Aquí puedes agregar lógica adicional, como redireccionar a otra página o mostrar un mensaje de éxito
+          this.limpiarCampos(); // Limpia los campos de registro después de agregar un producto
         },
         (error) => {
           console.error('Error al registrar el producto:', error);
-          this.toastr.error('Ocurrio un problema', 'No se agrego el roducto!');
+          this.toastr.error('Ocurrió un problema', 'No se agregó el producto!');
         }
       );
-
+  }
+  
+  limpiarCampos() {
+    // Limpia los campos de registro
+    this.nombre = '';
+    this.precio = 0;
+    this.detalles = '';
+    this.talla = '';
+    this.categoria = '';
   }
 }

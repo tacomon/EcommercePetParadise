@@ -34,7 +34,7 @@ export class LoginComponent {
           const rol = this.authService.getUsuarioRol();
           if (rol === 'administrador') {
             this.router.navigate(['/agregar']);
-            this.toastr.success('Inicio se sesion exitoso adminnistrador!', 'Inicio de sesion !');
+            this.toastr.success('Inicio se sesion exitoso administrador!', 'Inicio de sesion !');
           } else {
             this.router.navigate(['']);
             this.toastr.success('Inicio se sesion exitoso!', 'Inicio de sesion !');
@@ -43,7 +43,7 @@ export class LoginComponent {
         (error: any) => {
           console.error('Error al iniciar sesión:', error);
           this.toastr.error('Verifique correo y contraseña!', 'Error al iniciar sesión!');
-          // Mostrar un mensaje de error al usuario
+
         }
       );
     }
