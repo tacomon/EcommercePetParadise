@@ -21,7 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { AdminComponent } from './admin/admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({

@@ -2,8 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { Producto } from '../../models/producto';
-import { ProductoService } from '../../services/producto.service';
+// import { Producto } from '../models/producto.model';
+import { Producto } from '../models/producto';
+import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +13,7 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class AdminComponent implements OnInit {
   listProductos: Producto[] = [];
+  mostrarMensaje: boolean | undefined;
   
   constructor(
     @Inject(ProductoService) private _productoService: ProductoService,
@@ -21,6 +23,13 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProducto();
+    // Simulamos una llamada asíncrona para obtener los productos
+    setTimeout(() => {
+      // Supongamos que después de 5 segundos, aún no hay productos
+      if (this.listProductos.length === 0) {
+        this.mostrarMensaje = false; // Ocultamos el mensaje
+      }
+    }, 8000); // 5000 milisegundos = 5 segundos
   }
 
 
@@ -47,6 +56,6 @@ export class AdminComponent implements OnInit {
   }
 };
 
-const routesMap = new Map([['admin', '/admin']]);
+
 
  

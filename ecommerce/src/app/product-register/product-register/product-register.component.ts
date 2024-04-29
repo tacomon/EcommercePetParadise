@@ -46,7 +46,7 @@ export class ProductRegisterComponent {
       categoria: this.categoria
     };
   
-    this.http.post<any>('http://localhost:4000/api/productos', producto)
+    this.http.post<any>('http://localhost:4000/api/productos/', producto)
       .subscribe(
         (response) => {
           console.log('Producto registrado exitosamente:', response);

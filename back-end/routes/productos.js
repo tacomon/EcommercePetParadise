@@ -22,17 +22,17 @@ router.get('/:id', async (req, res) => {
     res.status(500).send('Hubo un error');
   }
 });
-
 // Ruta para agregar un producto al carrito
 router.post('/:id', productController.agregarAlCarrito);
 
 // Ruta para registrar un nuevo producto
 router.post('/', productController.registrarProducto);
 
-
-
 // Ruta para eliminar un producto por su ID
 router.delete('/:id', productController.eliminarProducto);
+
+//Ruta para actualizar un producto por su ID
+router.put('/:id', productController.actualizarProducto);
 
 
 module.exports = router;

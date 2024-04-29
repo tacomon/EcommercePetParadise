@@ -95,3 +95,62 @@ exports.eliminarProducto = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
   }
 };
+
+
+
+// Metodo de actualizar producto
+exports.actualizarProducto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const producto = await Producto.findById(id);
+
+    if (!producto) {
+      return res.status(404).json({ msg: 'El producto no existe' });
+    }
+
+    // Actualizar los campos del producto con los datos recibidos en el cuerpo de la solicitud
+    producto.nombre = req.body.nombre || producto.nombre;
+    producto.precio = req.body.precio || producto.precio;
+    producto.detalles = req.body.detalles || producto.detalles;
+    producto.categoria = req.body.categoria || producto.categoria;
+    producto.talla = req.body.talla || producto.talla;
+
+    const productoActualizado = await producto.save();
+    res.json(productoActualizado);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Hubo un error');
+  }
+  exports.obtenerProductos = async (req, res) => {
+
+    try {
+
+        const productos = await Producto.find();
+        res.json(productos)
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+
+}
+
+
+exports.deleteProducto = async (req, res) => {
+
+    try {
+        let producto = await Producto.findById(req.params.id);
+
+        if(!producto) {
+            res.status(404).json({ msg: 'No existe el producto' })
+        }
+       
+        await Producto.findOneAndRemove({ _id: req.params.id })
+        res.json({ msg: 'Producto eliminado con exito' });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+  }
+};

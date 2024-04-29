@@ -12,9 +12,9 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuard } from './auth.guard';
-import { AdminComponent } from './admin/admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 
-const routes: Routes = [
+const routes: Routes = [  
   { path: '', component:  ProductComponent },
   { path: 'info',  component: InformacionComponent},
   { path: 'login',  component: LoginComponent},

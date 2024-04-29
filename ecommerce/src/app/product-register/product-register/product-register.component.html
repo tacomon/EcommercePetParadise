@@ -30,6 +30,9 @@
 </header>
 <body>
   <div class="product-form">
+    <div class="">
+      <button routerLink="/registroP" style="float: right;">Ver lista de productos</button>
+    </div>
     <h1>Registrar un nuevo producto</h1>
     <div class="form">
       <form (submit)="registrarProducto()">
@@ -53,10 +56,10 @@
         <label for="categoria">Categoría:</label>
         <input type="text" id="categoria" name="categoria" [(ngModel)]="categoria" required>
 
-        <div>
+        <!-- <div>
           <label for="imagen">Seleccionar imagen:</label>
           <input type="file" id="imagen" name="imagen">
-        </div>
+        </div> -->
 <!-- 
         <div>
           <label for="imagen">Seleccionar imagen:</label>
@@ -66,6 +69,7 @@
         <br />
         <br />
         <br />
+        <!-- <button routerLink="/registroP" style="float: right;">Volver</button> -->
         <button type="submit" style="align-content: center" >Guardar</button>
       </form>
     </div>
