@@ -96,9 +96,6 @@ const enviarCorreoRegistro = async (email, token) => {
           <div class="container">
             <h1>¡Bienvenido a Pet Paradise!</h1>
             <p>Gracias por registrarte en nuestra tienda en línea de productos para mascotas.</p>
-            <p>Aquí está tu token de acceso:</p>
-            <h2>${token}</h2>
-            <p>Utiliza este token para acceder a tu cuenta y disfrutar de una experiencia de compra excepcional.</p>
             <p>Estamos emocionados de tenerte como parte de nuestra comunidad de amantes de las mascotas. Esperamos que encuentres todo lo que necesitas para consentir a tus compañeros peludos en Pet Paradise.</p>
             <p>¡Que tengas un excelente día!</p>
             <p>El equipo de Pet Paradise</p>
@@ -120,6 +117,11 @@ const enviarCorreoRegistro = async (email, token) => {
 //Función para enviar correo de inicio de sesión
 const enviarCorreoInicioSesion = async (email, token) => {
   try {
+
+    if (token === undefined) {
+      console.error('Error: el token es undefined');
+      return;
+    }
     const mailOptions = {
       from: 'Pet Paradise <angelvelazsalazar@gmail.com>',
       to: email,
@@ -199,10 +201,10 @@ const enviarCorreoRestablecimientoContrasena = async (email, token) => {
           <div class="container">
             <h1>Restablecimiento de contraseña</h1>
             <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en Pet Paradise.</p>
-            <p>Aquí está tu token de restablecimiento de contraseña:</p>
+            <p>Aquí está tu token de acceso:</p>
             <h2>${token}</h2>
             <p>Utiliza este token para establecer una nueva contraseña y mantener segura tu cuenta.</p>
-            <p>Si no has solicitado este restablecimiento de contraseña, por favor, ignora este correo electrónico y contacta con nuestro equipo de soporte.</p>
+            <p>Si no has solicitado este restablecimiento de contraseña, por favor contacta con nuestro equipo de soporte.</p>
             <p>¡Que tengas un excelente día!</p>
             <p>El equipo de Pet Paradise</p>
           </div>

@@ -31,7 +31,15 @@ const UsuarioSchema = new mongoose.Schema({
     default: null },
   resetTokenExpiry: { 
     type: Date, 
-    default: null }
+    default: null 
+  },
+    emailResetToken: {
+    type: String
+  },
+  loginToken: {
+    type: String
+  }
+
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema);

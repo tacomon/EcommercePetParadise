@@ -40,7 +40,6 @@ export class CartComponent implements OnInit {
     }
 }
 
-
   removeFromCart(item: CartItem): void {
     // Lógica para eliminar un elemento del carrito
     const index = this.cartItems.findIndex((cartItem) => cartItem.product._id === item.product._id);

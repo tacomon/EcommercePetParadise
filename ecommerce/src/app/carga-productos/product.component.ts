@@ -38,7 +38,8 @@ export class ProductComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private viewportScroller: ViewportScroller,
-    public authService: AuthService 
+    public authService: AuthService,
+    
   ) {}
 
   ngOnInit(): void {

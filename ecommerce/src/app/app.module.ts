@@ -22,6 +22,8 @@ import { AuthService } from './services/auth.service';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { ValidateTokenComponent } from './validate-token/validate-token.component';
+import { ValidateTokenLoginComponent } from './validate-token-login/validate-token-login.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { AdminComponent } from './admin/admin/admin.component';
     LoginComponent,
     RecoverPasswordComponent,
     ResetPasswordComponent,
-    AdminComponent
+    AdminComponent,
+    ValidateTokenComponent,
+    ValidateTokenLoginComponent
 
   ],
   imports: [

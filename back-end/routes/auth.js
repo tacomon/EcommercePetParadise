@@ -50,7 +50,6 @@ router.post('/registro', async (req, res) => {
   }
 });
 
-// Ruta de login de usuarios
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -67,6 +66,9 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Contraseña incorrecta' });
     }
 
+    // Restablecer el loginToken a null antes de generar un nuevo token
+    usuario.loginToken = null;
+
     // Generar token de autenticación
     const payload = {
       usuario: {
@@ -75,26 +77,64 @@ router.post('/login', async (req, res) => {
       }
     };
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      {
-        expiresIn: 60 // 1 min
-      },
-      async (error, token) => {
-        if (error) throw error;
+  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        // Enviar el token por correo electrónico
-        try {
-          await enviarCorreoInicioSesion(email, token);
-          console.log('Token enviado al correo electrónico:', email);
-        } catch (error) {
-          console.error('Error al enviar el token por correo electrónico:', error);
-        }
+    // Almacenar el nuevo token en el usuario
+    usuario.loginToken = token;
+    await usuario.save();
 
-        res.json({ token });
-      }
-    );
+    // Enviar el token por correo electrónico
+    try {
+      await enviarCorreoInicioSesion(email, token);
+      console.log('Token enviado al correo electrónico:', email);
+    } catch (error) {
+      console.error('Error al enviar el token por correo electrónico:', error);
+    }
+
+    res.json({ msg: 'Token enviado al correo electrónico' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Error en el servidor');
+  }
+});
+
+router.post('/recover-password', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const usuario = await Usuario.findOne({ email });
+    if (!usuario) {
+      return res.status(404).json({ msg: 'El usuario no existe' });
+    }
+
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    console.log('Token generado:', resetToken); // 
+
+    usuario.resetToken = resetToken;
+    usuario.resetTokenExpiry = Date.now() + 3600000;
+    usuario.emailResetToken = resetToken;
+
+    await usuario.save();
+
+    await enviarCorreoRestablecimientoContrasena(email, resetToken);
+
+    res.json({ msg: 'Token de recuperación enviado al correo electrónico' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Error en el servidor');
+  }
+});
+
+router.post('/validate-token', async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const usuario = await Usuario.findOne({ emailResetToken: token });
+    if (!usuario) {
+      return res.status(400).json({ msg: 'Token inválido' });
+    }
+
+    res.json({ msg: 'Token válido' });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Error en el servidor');
@@ -102,30 +142,39 @@ router.post('/login', async (req, res) => {
 });
 
 
-router.post('/recover-password', async (req, res) => {
-  const { email } = req.body;
-
+router.post('/validate-token-login', async (req, res) => {
+  const { token } = req.body;
   try {
-    // Verifica si el usuario existe
-    const usuario = await Usuario.findOne({ email });
+    // Buscar el usuario por el loginToken
+    const usuario = await Usuario.findOne({ loginToken: token });
     if (!usuario) {
-      return res.status(404).json({ msg: 'El usuario no existe' });
+      return res.status(400).json({ isValid: false, rol: null });
     }
 
-    // Genera un token de recuperación
-    const resetToken = crypto.randomBytes(20).toString('hex');
+    // Verificar la validez del token JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (!decoded) {
+      return res.status(400).json({ isValid: false, rol: null });
+    }
 
-    // Guarda el token en la base de datos
-    usuario.resetToken = resetToken;
-    usuario.resetTokenExpiry = Date.now() + 3600000; // Token válido por 1 hora
-    await usuario.save();
-
-    // Envía el token por correo electrónico al usuario
-    await enviarCorreoRestablecimientoContrasena(email, resetToken);
-
-    res.json({ msg: 'Token de recuperación enviado al correo electrónico' });
+    // El token es válido
+    const rol = usuario.rol; // Obtener el rol del usuario
+    res.json({ isValid: true, rol });
   } catch (error) {
     console.error(error.message);
+    res.status(500).send('Error en el servidor');
+  }
+});
+
+
+router.post('/send-token-email', async (req, res) => {
+  const { email, token } = req.body;
+
+  try {
+    await enviarCorreoInicioSesion(email, token);
+    res.json({ msg: 'Token enviado al correo electrónico' });
+  } catch (error) {
+    console.error('Error al enviar el token al correo electrónico:', error);
     res.status(500).send('Error en el servidor');
   }
 });
@@ -152,5 +201,25 @@ router.post('/reset-password', async (req, res) => {
     console.error(error.message);
     res.status(500).send('Error en el servidor');
   }
+
+  router.post('/validate-token', async (req, res) => {
+    const { token } = req.body;
+  
+    try {
+      console.log('Token recibido:', token);
+      const usuario = await Usuario.findOne({ emailResetToken: token });
+  
+      if (!usuario) {
+        return res.status(400).json({ msg: 'Token inválido' });
+      }
+  
+      res.json({ msg: 'Token válido' });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Error en el servidor');
+    }
+  });
 });
+
+
 module.exports = router;

@@ -62,9 +62,9 @@
         <div class="details">
           <h3 class="product-title m-b-0">{{productDetails.nombre}}</h3>
           <hr>
-          <h5 class="price m-t-0" >Precio: <span class="text-warning" >{{productDetails.precio | currency:'USD'}}</span></h5>
+          <h5 class="price m-t-0" >Precio: <span class="text-danger" >{{productDetails.precio | currency:'USD'}}</span></h5>
           <p class="product-description" style="text-align: justify;">{{productDetails.detalles}}</p>
-          <h5 class="sizes">Tallas Disponibles: <button *ngFor="let talla of productDetails.talla" class="btn btn-sm btn-custom m-1" [title]="talla">{{talla}}</button></h5>
+          <h6 class="cat m-t-0" >Categoria: <span class="text-align" >{{productDetails.categoria}}</span></h6>
           <hr>
           <div class="action">
             <button class="btn btn-primary mr-1" type="button" (click)="addToCart(productDetails)"  style="background-color:#004cffa5;">Agregar a carrito</button>
