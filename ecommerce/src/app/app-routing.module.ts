@@ -23,7 +23,9 @@ const routes: Routes = [
   { path: 'product-detail/:id', component:  ProductDetailsComponent },
   { path: 'cart', component:  CartComponent },
   { path: 'registro', component:  RegistroComponent },
-  { path: 'agregar', component: ProductRegisterComponent, canActivate: [AuthGuard] }, // Ruta protegida
+  // { path: 'agregar', component: ProductRegisterComponent, canActivate: [AuthGuard] }, // Ruta protegida
+  { path: 'agregar', component: ProductRegisterComponent}, // Ruta protegida
+  { path: 'editar/:id', component: ProductRegisterComponent},
   { path: 'registroP', component: AdminComponent}, // Ruta protegida
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**',  component: ErrorPersonalizadoComponent},

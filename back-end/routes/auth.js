@@ -119,7 +119,7 @@ router.post('/recover-password', async (req, res) => {
     usuario.resetToken = resetToken;
     usuario.resetTokenExpiry = Date.now() + 3600000; // Token válido por 1 hora
     await usuario.save();
-
+    
     // Envía el token por correo electrónico al usuario
     await enviarCorreoRestablecimientoContrasena(email, resetToken);
 

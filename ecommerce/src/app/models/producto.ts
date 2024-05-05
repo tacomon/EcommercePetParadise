@@ -7,6 +7,7 @@ export class Producto {
     categoria: string;
     talla: string;
     imagen: string;
+  static _id: null | undefined;
 
     constructor(_id:number, nombre: string,  precio: number, detalles: string, talla: string, categoria: string,imagen: string) {
         this._id = _id;

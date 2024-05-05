@@ -204,4 +204,5 @@ export class ProductComponent implements OnInit {
       return nombre.includes(query.toLowerCase());
     });
   }
+
 }

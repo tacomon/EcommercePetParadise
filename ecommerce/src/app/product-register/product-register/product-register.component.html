@@ -36,15 +36,15 @@
     <h1>Registrar un nuevo producto</h1>
     <div class="form">
       <form (submit)="registrarProducto()">
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">Nombre del producto:</label>
         <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
-
+    
         <label for="precio">Precio:</label>
         <input type="text" id="precio" name="precio" [(ngModel)]="precio" required>
-
+    
         <label for="detalles">Detalles:</label>
         <textarea id="detalles" name="detalles" [(ngModel)]="detalles" required></textarea>
-
+    
         <label for="talla">Talla:</label>
         <select id="talla" name="talla" [(ngModel)]="talla" required>
           <option value="">Selecciona una talla</option>
@@ -52,20 +52,19 @@
           <option value="Mediano">Mediano</option>
           <option value="Grande">Grande</option>
         </select>
-
+    
         <label for="categoria">Categoría:</label>
-        <input type="text" id="categoria" name="categoria" [(ngModel)]="categoria" required>
-
-        <!-- <div>
-          <label for="imagen">Seleccionar imagen:</label>
-          <input type="file" id="imagen" name="imagen">
-        </div> -->
-<!-- 
+        <select id="categoria" name="categoria" [(ngModel)]="categoria" required>
+          <option value="">Selecciona una Categoría</option>
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+        </select>
+    
         <div>
           <label for="imagen">Seleccionar imagen:</label>
-          <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)" accept="image/*">
-          
-        </div> -->
+          <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)" accept="image/*" required>
+        </div>
+    
         <br />
         <br />
         <br />
@@ -73,7 +72,33 @@
         <button type="submit" style="align-content: center" >Guardar</button>
       </form>
     </div>
+    
   </div>
+    <!-- Formulario de registro
+    <div *ngIf="!productoEditado">
+      <h1>Registrar un nuevo producto</h1>-->
+      <!-- Agrega aquí tu formulario de registro
+    </div>
+
+      Formulario de edición 
+      <div *ngIf="productoEditado">
+        <h1>Editar Producto</h1>
+        <form (ngSubmit)="guardarCambios()">
+           Campos de edición del producto 
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="productoEditado.nombre" required>
+
+          <label for="precio">Precio:</label>
+          <input type="number" id="precio" name="precio" [(ngModel)]="productoEditado.precio" required>
+
+         Agrega más campos según los detalles del producto que desees editar 
+
+          <button type="submit">Guardar Cambios</button>
+          <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+        </form>
+      </div>  -->
+
+  
 </body>
 <app-footer></app-footer>
 </html>

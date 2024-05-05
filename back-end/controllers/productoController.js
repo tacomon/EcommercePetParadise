@@ -63,13 +63,43 @@ exports.agregarAlCarrito = async (req, res) => {
 };
 
 // Controlador para registrar un nuevo producto
+// exports.registrarProducto = async (req, res) => {
+//   try {
+//     if (!req.body) {
+//       return res.status(400).json({ mensaje: 'No se proporcionaron datos en el cuerpo de la solicitud' });
+//     }
+//     const { nombre, precio, detalles, talla, categoria } = req.body;
+//     const nuevoProducto = new Producto({ nombre, precio, detalles, talla, categoria, imagen  });  
+//     await nuevoProducto.save();
+  
+//     res.status(201).json({ mensaje: 'Producto registrado exitosamente', producto: nuevoProducto });
+//   } catch (error) {
+//     res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
+//   }
+// };
+
+const fs = require('fs');
+const path = require('path');
+// Controlador para registrar un nuevo producto
 exports.registrarProducto = async (req, res) => {
   try {
     if (!req.body) {
       return res.status(400).json({ mensaje: 'No se proporcionaron datos en el cuerpo de la solicitud' });
     }
     const { nombre, precio, detalles, talla, categoria } = req.body;
-    const nuevoProducto = new Producto({ nombre, precio, detalles, talla, categoria  });  
+    
+    // Verificar si se envió una imagen
+    if (!req.files || !req.files.imagen) {
+      return res.status(400).json({ mensaje: 'No se proporcionó una imagen para el producto' });
+    }
+    
+    const imagen = req.files.imagen;
+    const uploadPath = path.join(__dirname, '../upload', imagen.name);
+
+    // Mover la imagen al directorio de uploads
+    await imagen.mv(uploadPath);
+    
+    const nuevoProducto = new Producto({ nombre, precio, detalles, talla, categoria, imagen: uploadPath });  
     await nuevoProducto.save();
   
     res.status(201).json({ mensaje: 'Producto registrado exitosamente', producto: nuevoProducto });
@@ -77,6 +107,7 @@ exports.registrarProducto = async (req, res) => {
     res.status(500).json({ mensaje: 'Error interno del servidor', error: error.message });
   }
 };
+
 
 
 // Controlador para eliminar un producto por su ID

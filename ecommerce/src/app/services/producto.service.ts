@@ -8,6 +8,9 @@ import { CartItem } from '../models/cartItem';
   providedIn: 'root',
 })
 export class ProductoService {
+  getProductoById(id: string) {
+    throw new Error('Method not implemented.');
+  }
   private cart: CartItem[] = [];
   url = 'http://localhost:4000/api/productos/';
 
