@@ -16,7 +16,7 @@ export class AuthService {
     // Verificar la expiración del token cada minuto
     setInterval(() => {
       this.checkTokenExpiration();
-    }, 60000);
+    }, 6);
   }
   login(email: string, password: string): Observable<{ token: string }> {
     return this.http.post<{ token: string }>('http://localhost:4000/api/auth/login', { email, password })
@@ -51,7 +51,7 @@ export class AuthService {
     }
 
     const decodedToken: any = jwtDecode(token);
-    const expirationDate = new Date(decodedToken.exp * 10000000);
+    const expirationDate = new Date(decodedToken.exp * 10);
     return expirationDate;
   }
 
