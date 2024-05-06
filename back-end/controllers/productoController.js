@@ -3,7 +3,7 @@ const Producto = require("../models/Producto");
 
 exports.obtenerProductos = async (req, res) => {
     const page = parseInt(req.query.page) || 1; // Página actual, por defecto la primera página
-    const limit = parseInt(req.query.limit) || 30; // Cantidad de productos por página
+    const limit = parseInt(req.query.limit) || 40; // Cantidad de productos por página
 
     try {
         const skip = (page - 1) * limit;

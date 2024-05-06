@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -24,7 +23,7 @@ export class ResetPasswordComponent {
   ) {
     this.resetForm = this.formBuilder.group(
       {
-        password: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6), this.validatePasswordFormat]],
         confirmPassword: ['', Validators.required]
       },
       { validator: this.passwordMatchValidator }
@@ -37,17 +36,37 @@ export class ResetPasswordComponent {
     });
   }
 
+
+
+  validatePasswordFormat(control: FormControl) {
+    const password = control.value;
+    const numberPattern = /[0-9]/;
+    const uppercasePattern = /[A-Z]/;
+
+
+    if (!uppercasePattern.test(password)) {
+      return { missingUppercase: true };
+    }
+    if (!numberPattern.test(password)) {
+      return { missingNumber: true };
+    }
+
+
+    return null;
+  }
+
   passwordMatchValidator(form: FormGroup) {
     const password = form.controls['password'].value;
     const confirmPassword = form.controls['confirmPassword'].value;
     if (password !== confirmPassword) {
       form.controls['confirmPassword'].setErrors({ mismatch: true });
-      this.toastr.info('Verifique que sean iguales las contraseñas!', 'Verifique contraseña !');
-
+      return { mismatch: true }; // Devuelve un error si las contraseñas no coinciden
     } else {
       form.controls['confirmPassword'].setErrors(null);
+      return null; // Devuelve null si las contraseñas coinciden
     }
   }
+  
   onSubmit() {
     if (this.resetForm.valid) {
       const { password } = this.resetForm.value;
@@ -58,7 +77,7 @@ export class ResetPasswordComponent {
           (response) => {
             // Manejar la respuesta exitosa
             console.log('Contraseña restablecida correctamente');
-            this.toastr.success('Contraseña restablecida!', 'Restablecio su contraseña!');
+            this.toastr.success('Contraseña restablecida!', 'Restableció su contraseña!');
             // Redirigir al componente de inicio de sesión
             this.router.navigate(['/login']);
           },

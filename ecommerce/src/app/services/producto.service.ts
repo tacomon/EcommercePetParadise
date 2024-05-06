@@ -39,8 +39,8 @@ export class ProductoService {
   }
 
   getCartItems(): Observable<CartItem[]> {
-    console.log('Elementos del carrito en el servicio:', this.cart);
-    return of(this.cart);
+    const url = `${this.url}/carrito`;
+    return this.http.get<CartItem[]>(url);
   }
   updateCart(cart: CartItem[]): void {
     this.cart = cart;
