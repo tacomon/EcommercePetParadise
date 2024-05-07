@@ -157,7 +157,6 @@ router.post('/validate-token-login', async (req, res) => {
       return res.status(400).json({ isValid: false, rol: null });
     }
 
-<<<<<<< HEAD
     // Guarda el token en la base de datos
     usuario.resetToken = resetToken;
     usuario.resetTokenExpiry = Date.now() + 3600000; // Token válido por 1 hora
@@ -167,11 +166,6 @@ router.post('/validate-token-login', async (req, res) => {
     await enviarCorreoRestablecimientoContrasena(email, resetToken);
 
     res.json({ msg: 'Token de recuperación enviado al correo electrónico' });
-=======
-    // El token es válido
-    const rol = usuario.rol; // Obtener el rol del usuario
-    res.json({ isValid: true, rol });
->>>>>>> 936e91e6b3ceac0dbdef63d89af1eca79e39f3f9
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Error en el servidor');

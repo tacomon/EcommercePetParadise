@@ -21,13 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-<<<<<<< HEAD
 import { AdminComponent } from './admin/admin.component';
-=======
-import { AdminComponent } from './admin/admin/admin.component';
-import { ValidateTokenComponent } from './validate-token/validate-token.component';
 import { ValidateTokenLoginComponent } from './validate-token-login/validate-token-login.component';
->>>>>>> 936e91e6b3ceac0dbdef63d89af1eca79e39f3f9
 
 
 @NgModule({
@@ -42,7 +37,6 @@ import { ValidateTokenLoginComponent } from './validate-token-login/validate-tok
     ProductRegisterComponent,
     FooterComponent,
     InformacionComponent,
-    LoginComponent,
     RecoverPasswordComponent,
     ResetPasswordComponent,
     AdminComponent,
